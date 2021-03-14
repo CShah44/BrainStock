@@ -4,3 +4,22 @@
     "Lucida Sans", Arial, sans-serif;
   font-weight: bold;
 }
+
+.navbar,
+.navbar-brand {
+  font-family: "Dosis";
+  font-size: 1.4em;
+}
+
+.logo-img {
+  background-color: rgb(207, 24, 0);
+}
+
+.part {
+  height: 5em;
+  align-items: center;
+  /* font-weight: bold; */
+  font-family: "Dosis";
+  font-size: 3em;
+  background-color: rgb(172, 172, 172);
+}
