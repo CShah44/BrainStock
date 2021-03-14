@@ -16,10 +16,18 @@
 }
 
 .part {
-  height: 5em;
+  height: 10em;
+  /* margin:auto;
+  display: block;
+  align-items: center; */
+  display: flex;
+  justify-content: center;
   align-items: center;
-  /* font-weight: bold; */
   font-family: "Dosis";
   font-size: 3em;
   background-color: rgb(172, 172, 172);
+}
+
+.h-text {
+  font-size: 1em;
 }
