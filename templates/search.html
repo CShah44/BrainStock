@@ -1,2 +1,14 @@
-{% extends "base.html" %} {% block content %} This is search page! {% endblock
-%}
+{% extends "base.html" %} {% block title %} Search For Stocks {% endblock %}
+{%block content %}
+
+<form method="POST">
+  <label for="stock_name">Stock Ticker Symbol😀:</label>
+  <input
+    type="text"
+    id="stock_name"
+    name="stock_name"
+    placeholder="Enter Stock Name"
+  />
+  <button type="submit">Get Data</button>
+</form>
+{% endblock%}
