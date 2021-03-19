@@ -1,4 +1,5 @@
-from flask import Flask, render_template, url_for, request, redirect
+from flask import Flask, render_template, url_for, request, redirect, send_from_directory
+import os
 
 # For Stock Visualization Stuff :-)
 import datetime as dt
@@ -7,7 +8,9 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from mplfinance.original_flavor import candlestick_ohlc
 import pandas as pd
-import mpld3
+import mpld3  # To show matplotlib charts on webpage
+from finvizfinance.quote import finvizfinance
+from finvizfinance.news import News
 
 app = Flask(__name__)
 
@@ -52,6 +55,12 @@ def visualize(ticker):
     return mpld3.fig_to_html(fig)
 
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -60,16 +69,34 @@ def home():
 @app.route('/<stock_name>')
 def get_stock_data(stock_name):
     graph = visualize(stock_name)
-    return render_template('stock.html', graph=graph)
+    stock = finvizfinance(stock_name)
+
+    stock_news = stock.TickerNews()
+
+    titles = stock_news.head(10)['Title']
+    links = stock_news.head(10)['Link']
+    dates = stock_news.head(10)['Date']
+
+    desc = stock.TickerDescription()
+    details = stock.TickerFundament()
+
+    return render_template('stock.html', graph=graph, desc=desc, details=details, titles=titles, links=links, dates=dates)
 
 
 @app.route('/search', methods=['GET', 'POST'])
 def search_page():
     if request.method == 'POST':
         ticker = request.form.get('stock_name')
-        # return render_template('stock.html', graph=visualize(ticker))
         return redirect(url_for('get_stock_data', stock_name=ticker))
-    return render_template('search.html')
+
+    news_obj = News()
+    all_news = news_obj.getNews()
+
+    titles = all_news['news'].head(10)['Title']
+    links = all_news['news'].head(10)['Link']
+    dates = all_news['news'].head(10)['Date']
+
+    return render_template('search.html', titles=titles, links=links, dates=dates)
 
 
 if __name__ == '__main__':

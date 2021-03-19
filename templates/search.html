@@ -11,4 +11,12 @@
   />
   <button type="submit">Get Data</button>
 </form>
+
+<div>
+  {% for i in range(0, 10) %}
+  <div>{{ dates[i] }}</div>
+  <div><a href="{{ links[i] }}">{{ titles[i] }}</a></div>
+  {% endfor %}
+</div>
+
 {% endblock%}

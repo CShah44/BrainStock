@@ -1,2 +1,16 @@
 {% extends "base.html" %} {% block title %} The Stock Data! {% endblock %}
-{%block content %} {{ graph|safe }} {% endblock %}
+{%block content %}
+<div>
+  <span>{{ graph|safe }}</span>
+  {{ details['Company'] }} {{ details['Sector'] }} {{ details['Industry'] }}
+</div>
+<div>{{ desc }}</div>
+
+<div>
+  {% for i in range(0, 10) %}
+  <div>{{ dates[i] }}</div>
+  <div><a href="{{ links[i] }}">{{ titles[i] }}</a></div>
+  {% endfor %}
+</div>
+
+{% endblock %}
