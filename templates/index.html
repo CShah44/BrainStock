@@ -2,28 +2,31 @@
 {% extends "base.html" %} {% block content%}
 
 <!-- The Logo -->
+<div class="container-fluid logo-img p-3 text-center">
+  <img src="../static/images/logo.png" alt="Logo" class="img-fluid" />
+</div>
+
+<!-- Main Content -->
 <div class="container-fluid">
-  <div class="container-fluid text-center logo-img p-3">
-    <img src="../static/images/logo.png" alt="Logo" class="img-fluid" />
+  <div class="row text-center p-2 my-3 text-center">
+    <span class="col-sm p-2"> Analyze and Visualize Stock Data! </span>
+    <img
+      src="../static/images/img1.jpeg"
+      class="col-sm img-fluid p-2"
+      alt="[IMAGE]"
+    />
   </div>
-  <hr />
-  <!-- Main Content -->
-  <div class="container-fluid text-center part p-2">
-    <span class="h-text p-2"> Analyze and Visualize Stock Data! </span>
-    <img src="../static/images/img1.jpeg" class="img-fluid p-2" alt="[IMAGE]" />
-  </div>
-  <hr />
-  <div class="container-fluid text-center part p-2">
-    <span class="h-text p-2"> Simple yet Efficient! </span>
+  <div class="row text-center p-2">
+    <span class="col-sm p-2 text-center"> Simple yet Efficient! </span>
     <img
       src="../static/images/img2.jpeg"
-      class="img-fluid p-2"
+      class="col-sm img-fluid p-2"
       alt="[IMAGE2]"
     />
   </div>
-  <hr />
-  <div class="container-fluid text-center part p-2">
-    <span class="h-text p-2"> Stay ahead of others with our predictions! </span>
+  <div class="row text-center p-2">
+    <span class="col-sm p-2"> Stay ahead of others with our predictions! </span>
   </div>
 </div>
+
 {% endblock %}

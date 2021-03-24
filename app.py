@@ -4,15 +4,21 @@ import os
 # For Stock Visualization Stuff :-)
 import datetime as dt
 import pandas_datareader as web
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
-from mplfinance.original_flavor import candlestick_ohlc
 import pandas as pd
-import mpld3  # To show matplotlib charts on webpage
+import plotly.graph_objs as go  # Plotly module to make candlestick graphs
+import plotly.io as pio  # Plotly module to convert chart in html
+
 from finvizfinance.quote import finvizfinance
 from finvizfinance.news import News
 
 app = Flask(__name__)
+
+news_obj = News()
+all_news = news_obj.getNews()
+
+titles = all_news['news'].head(20)['Title']
+links = all_news['news'].head(20)['Link']
+dates = all_news['news'].head(20)['Date']
 
 
 def visualize(ticker):
@@ -22,37 +28,35 @@ def visualize(ticker):
     RETURNS - An html string
     '''
 
-    start = dt.datetime(2020, 12, 1)
+    start = dt.datetime(2021, 1, 1)
     end = dt.datetime.now()
-
     # Load Ticker From Entry And Download Data
     data = web.DataReader(ticker, 'yahoo', start, end)
 
     # Restructure Data Into OHLC Format
     data = data[['Open', 'High', 'Low', 'Close']]
 
-    # Reset Index And Convert Dates Into Numerical Format
+    # Reset Index
     data.reset_index('Date', inplace=True)
-    data['Date'] = data['Date'].map(mdates.date2num)
 
-    # Adjust Style Of The Plot
-    fig, ax = plt.subplots()
-    ax.grid(True)
-    ax.set_axisbelow(True)
-    ax.set_title(f'{ticker} Share Price')
-    # ax.figure.canvas.set_window_title('Stock Price Visualizer')
-    # ax.set_facecolor('black')
-    # ax.figure.set_facecolor('#121212')
-    # ax.tick_params(axis='x', colors='white')
-    # ax.tick_params(axis='y', colors='white')
-    ax.xaxis_date()
+    # Make the plotly candlestick graph
+    figure = go.Figure(
+        data=[go.Candlestick(
+            x=data['Date'],
+            open=data['Open'],
+            high=data['High'],
+            low=data['Low'],
+            close=data['Close'])
+        ],
+        layout=go.Layout(
+            height=500,
+            template='plotly_dark'
+            # Other templates : ["plotly", "plotly_white", "plotly_dark", "ggplot2", "seaborn", "simple_white", "none"]
+        )
+    )
 
-    # plt.figure(figsize=(10, 5))
-
-    # Plot The Candlestick Chart
-    candlestick_ohlc(ax, data.values, width=0.5, colorup='#00ff00')
-    # mpf.plot(data, type='candle')
-    return mpld3.fig_to_html(fig)
+    figure.update_layout(xaxis_rangeslider_visible=False)
+    return pio.to_html(figure)
 
 
 @app.route('/favicon.ico')
@@ -61,9 +65,12 @@ def favicon():
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
+# The home page
 @app.route('/')
 def home():
     return render_template('index.html')
+
+# The requested stock page
 
 
 @app.route('/<stock_name>')
@@ -83,21 +90,16 @@ def get_stock_data(stock_name):
     return render_template('stock.html', graph=graph, desc=desc, details=details, titles=titles, links=links, dates=dates)
 
 
+# Search page with news!
 @app.route('/search', methods=['GET', 'POST'])
 def search_page():
     if request.method == 'POST':
         ticker = request.form.get('stock_name')
         return redirect(url_for('get_stock_data', stock_name=ticker))
 
-    news_obj = News()
-    all_news = news_obj.getNews()
-
-    titles = all_news['news'].head(10)['Title']
-    links = all_news['news'].head(10)['Link']
-    dates = all_news['news'].head(10)['Date']
-
     return render_template('search.html', titles=titles, links=links, dates=dates)
 
 
+# Main function
 if __name__ == '__main__':
     app.run(debug=True)

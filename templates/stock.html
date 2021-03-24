@@ -1,15 +1,31 @@
 {% extends "base.html" %} {% block title %} The Stock Data! {% endblock %}
 {%block content %}
-<div>
-  <span>{{ graph|safe }}</span>
-  {{ details['Company'] }} {{ details['Sector'] }} {{ details['Industry'] }}
+<div class="text-center">
+  <h1 class="display-6 fw-bold py-2">
+    {{ details['Company'] }}, {{ details['Sector'] }}, {{ details['Industry'] }}
+  </h1>
+  <span class="py-3">{{ graph|safe }}</span>
 </div>
-<div>{{ desc }}</div>
 
-<div>
+<div class="bg-dark px-4 py-5 text-center text-white">
+  <p class="fs-5 mb-4">
+    <span class="fs-1"> About the Stock </span>
+    <br />
+    {{ desc }}
+  </p>
+</div>
+
+<div class="container-fluid">
   {% for i in range(0, 10) %}
-  <div>{{ dates[i] }}</div>
-  <div><a href="{{ links[i] }}">{{ titles[i] }}</a></div>
+  <div class="card py-3 my-2 container-fluid border-dark">
+    <div class="card-title row">
+      <span class="col-11">{{ dates[i] }}</span>
+      <a href="{{ links[i] }}" class="col fs-6">Read More</a>
+    </div>
+    <div class="card-body">
+      <p class="card-text fs-2">{{ titles[i] }}</p>
+    </div>
+  </div>
   {% endfor %}
 </div>
 
