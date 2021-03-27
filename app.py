@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, send_from_directory
+from flask import Flask, render_template, url_for, request, redirect, send_from_directory, flash
 import os
 
 # For Stock Visualization Stuff :-)
@@ -12,6 +12,7 @@ from finvizfinance.quote import finvizfinance
 from finvizfinance.news import News
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'aehrdxnfhfx'
 
 news_obj = News()
 all_news = news_obj.getNews()
@@ -75,17 +76,25 @@ def home():
 
 @app.route('/<stock_name>')
 def get_stock_data(stock_name):
-    graph = visualize(stock_name)
-    stock = finvizfinance(stock_name)
+    try:
+        graph = visualize(stock_name)
+    except:
+        flash('Stock not found!', category='error')
+        return redirect(url_for('search_page'))
 
-    stock_news = stock.TickerNews()
+    try:
+        stock = finvizfinance(stock_name)
+        stock_news = stock.TickerNews()
 
-    titles = stock_news.head(10)['Title']
-    links = stock_news.head(10)['Link']
-    dates = stock_news.head(10)['Date']
+        titles = stock_news.head(10)['Title']
+        links = stock_news.head(10)['Link']
+        dates = stock_news.head(10)['Date']
 
-    desc = stock.TickerDescription()
-    details = stock.TickerFundament()
+        desc = stock.TickerDescription()
+        details = stock.TickerFundament()
+    except:
+        flash('Error retrieving stock related details!', category='error')
+        return redirect(url_for('search_page'))
 
     return render_template('stock.html', graph=graph, desc=desc, details=details, titles=titles, links=links, dates=dates)
 

@@ -1,31 +1,80 @@
 <!-- This forms the homepage! -->
-{% extends "base.html" %} {% block content%}
+{% extends "base.html" %} {% block head %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static', filename='style.css') }}"
+/>{% endblock %} {% block content%}
 
 <!-- The Logo -->
-<div class="container-fluid logo-img p-3 text-center">
+<div class="container-fluid p-3 text-center logo">
   <img src="../static/images/logo.png" alt="Logo" class="img-fluid" />
 </div>
 
-<!-- Main Content -->
-<div class="container-fluid">
-  <div class="row text-center p-2 my-3 text-center">
-    <span class="col-sm p-2"> Analyze and Visualize Stock Data! </span>
-    <img
-      src="../static/images/img1.jpeg"
-      class="col-sm img-fluid p-2"
-      alt="[IMAGE]"
-    />
+<!-- Main Content  -->
+<!-- Image 1 -->
+<div class="container col-xxl-8 px-4 py-5">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6">
+      <img
+        src="../static/images/img1.jpeg"
+        class="d-block mx-lg-auto img-fluid"
+        alt="Bootstrap Themes"
+        width="700"
+        height="500"
+        loading="lazy"
+      />
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold lh-1 mb-3">
+        Analyze and Visualize Stock Data!
+      </h1>
+      <p class="lead">
+        Use our easy to use stock market tools to visualize data quickly. Just
+        enter the ticker symbol of the required stock and you are ready to go!
+      </p>
+    </div>
   </div>
-  <div class="row text-center p-2">
-    <span class="col-sm p-2 text-center"> Simple yet Efficient! </span>
-    <img
-      src="../static/images/img2.jpeg"
-      class="col-sm img-fluid p-2"
-      alt="[IMAGE2]"
-    />
+</div>
+
+<!-- Image 2 -->
+<div class="container col-xxl-8 px-4 py-5">
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold lh-1 mb-3">
+        Stay up-to-date with our news feed!
+      </h1>
+      <p class="lead">
+        You can ready our specially selected news to get the lastest insights of
+        the financial world on our search for stocks page. Read news about your
+        required stock and stay up-to-date!
+      </p>
+    </div>
+    <div class="col-10 col-sm-8 col-lg-6">
+      <img
+        src="../static/images/img2.jpeg"
+        class="d-block mx-lg-auto img-fluid"
+        alt="Bootstrap Themes"
+        width="700"
+        height="500"
+        loading="lazy"
+      />
+    </div>
   </div>
-  <div class="row text-center p-2">
-    <span class="col-sm p-2"> Stay ahead of others with our predictions! </span>
+</div>
+
+<div class="bg-dark text-secondary px-4 py-5 text-center">
+  <div class="py-5">
+    <h1 class="display-5 fw-bold text-white">
+      Ready to enter the financial world?
+    </h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="fs-5 mb-4">
+        Get started immediately with our convenient and simple to use User
+        Interface. Go to search page to get data about your required stock or
+        just explore the news section to get an insight of stock market.
+      </p>
+    </div>
   </div>
 </div>
 
