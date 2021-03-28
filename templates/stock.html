@@ -3,7 +3,9 @@
 
 <div class="bg-dark">
   <div class="text-center">
-    <h1 class="display-6 fw-bold py-2 text-white">
+    <h1
+      class="display-6 fw-bold py-2 my-3 pt-4 text-white animate__animated animate__bounceInDown"
+    >
       {{ details['Company'] }}, {{ details['Sector'] }}, {{ details['Industry']
       }}
     </h1>
@@ -12,21 +14,26 @@
 
   <div class="px-4 py-5 text-center text-white">
     <p class="fs-5 mb-4">
-      <span class="fs-1"> About the Stock </span>
-      <br />
-      {{ desc }}
+      <span class="fs-1"> About the Stock </span> <br />
+      <span> {{ desc }} </span>
     </p>
+  </div>
+
+  <div class="text-white text-center fs-2">
+    Read some news about the company!
   </div>
 
   <div class="container-fluid">
     {% for i in range(0, 10) %}
-    <div
-      class="card py-3 my-2 container-fluid border-dark text-white"
-      style="background-color: #525252"
-    >
+    <div class="card py-3 my-2 container-fluid border-dark text-black">
       <div class="card-title row">
         <span class="col-11">{{ dates[i] }}</span>
-        <a href="{{ links[i] }}" class="col fs-6" target="_blank">Read More</a>
+        <a
+          href="{{ links[i] }}"
+          class="col fs-6 text-decoration-none"
+          target="_blank"
+          >Read More</a
+        >
       </div>
       <div class="card-body">
         <p class="card-text fs-2">{{ titles[i] }}</p>

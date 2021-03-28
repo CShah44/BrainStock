@@ -12,3 +12,8 @@
     border-radius: 0.3rem;
   }
 }
+
+.bounce_hover:hover {
+  animation: bounce;
+  /* animation-duration: 0.5s; */
+}

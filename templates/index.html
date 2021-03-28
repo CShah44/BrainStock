@@ -7,22 +7,28 @@
 />{% endblock %} {% block content%}
 
 <!-- The Logo -->
-<div class="container-fluid p-3 text-center logo d-flex justify-content-center">
+<div
+  class="container-fluid p-3 text-center bg-dark d-flex justify-content-center"
+  style="height: 90vh"
+>
   <img
     src="../static/images/logo.png"
     alt="Logo"
-    class="img-fluid align-self-center"
+    class="img-fluid align-self-center rounded"
+    data-tilt
+    data-tilt-max-glare="1"
+    data-tilt-scale="1.1"
   />
 </div>
 
 <!-- Main Content  -->
 <!-- section 1 -->
-<div class="container-fluid col-xxl-8 px-4 py-5 sec">
+<div class="container-fluid col-xxl-8 px-4 py-5 bg-dark text-white">
   <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
     <div class="col-10 col-sm-8 col-lg-6">
       <img
         src="../static/images/img1.jpeg"
-        class="d-block mx-lg-auto img-fluid"
+        class="d-block mx-lg-auto img-fluid rounded shadow-lg"
         alt="Bootstrap Themes"
         width="700"
         height="500"
@@ -42,7 +48,7 @@
 </div>
 
 <!-- section 2 -->
-<div class="container-fluid col-xxl-8 px-4 py-5 sec">
+<div class="container-fluid col-xxl-8 px-4 py-5 bg-dark text-white">
   <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
     <div class="col-lg-6">
       <h1 class="display-5 fw-bold lh-1 mb-3">
@@ -57,7 +63,7 @@
     <div class="col-10 col-sm-8 col-lg-6">
       <img
         src="../static/images/img2.jpeg"
-        class="d-block mx-lg-auto img-fluid"
+        class="d-block mx-lg-auto img-fluid rounded shadow-lg"
         alt="Bootstrap Themes"
         width="700"
         height="500"
@@ -83,4 +89,9 @@
   </div>
 </div>
 
+{% endblock %} {% block srcipts %}
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename='vanilla-tilt.min.js') }}"
+></script>
 {% endblock %}

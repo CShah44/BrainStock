@@ -1,9 +1,8 @@
-.logo {
-  /* background-image: linear-gradient(to right, black, gray); */
-  background-color: rgb(68, 68, 68);
-  height: 90vh;
-}
-
 .sec {
   background-color: rgb(216, 216, 216);
+}
+
+.bounce_hover:hover {
+  animation: bounce;
+  animation-duration: 2s;
 }

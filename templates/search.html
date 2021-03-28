@@ -3,12 +3,14 @@
 {% endblock %} {% block title %} Search For Stocks {% endblock %} {%block
 content %}
 
-<div class="container-fluid">
-  <div class="row py-5 text-center text-black">
+<div class="container-fluid bg-dark">
+  <div
+    class="row py-5 text-center text-white animate__animated animate__slideInLeft"
+  >
     <h1 class="display-4 py-2">Enter Stock Ticker Symbol</h1>
     <div class="col-lg-6 mx-auto">
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <form method="POST">
+        <form method="POST" class="">
           <input
             type="text"
             id="stock_name"
@@ -21,11 +23,17 @@ content %}
           </button>
         </form>
       </div>
+      <div class="p-1 mt-2">
+        (Don't know about tickers? Try AAPL, MSFT, TSLA, AMZN, RELI, etc.)
+      </div>
     </div>
   </div>
 
-  <div class="row p-2 text-black">
-    <span style="font-size: 3em">
+  <div class="row mb-4 p-2 px-4 text-white text-center lh-1">
+    <span
+      style="font-size: 3em"
+      class="animate__animated animate__slideInRight"
+    >
       Don't know where to invest? <br />
       Reading some news should get you going!
     </span>
@@ -35,7 +43,12 @@ content %}
     <div class="card py-3 my-2 container-fluid border-dark">
       <div class="card-title row">
         <span class="col-11">{{ dates[i] }}</span>
-        <a href="{{ links[i] }}" class="col fs-6" target="_blank">Read More</a>
+        <a
+          href="{{ links[i] }}"
+          class="col fs-6 text-decoration-none"
+          target="_blank"
+          >Read More</a
+        >
       </div>
       <div class="card-body">
         <p class="card-text fs-2">{{ titles[i] }}</p>
