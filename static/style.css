@@ -6,3 +6,7 @@
   animation: bounce;
   animation-duration: 2s;
 }
+
+.shadow-light {
+  box-shadow: 0 0.3rem 0.6rem rgb(0, 0, 0);
+}

@@ -13,7 +13,6 @@
   }
 }
 
-.bounce_hover:hover {
-  animation: bounce;
-  /* animation-duration: 0.5s; */
+.shadow-light {
+  box-shadow: 0 0.3rem 0.6rem rgb(44, 44, 44);
 }

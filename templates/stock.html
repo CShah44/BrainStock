@@ -4,10 +4,10 @@
 <div class="bg-dark">
   <div class="text-center">
     <h1
-      class="display-6 fw-bold py-2 my-3 pt-4 text-white animate__animated animate__bounceInDown"
+      class="display-6 fw-bold py-2 mb-3 text-white animate__animated animate__bounceInDown"
     >
-      {{ details['Company'] }}, {{ details['Sector'] }}, {{ details['Industry']
-      }}
+      {{ details['Company'] }} {% if details['Sector'] %}, {{ details['Sector']
+      }}, {{ details['Industry']}} {% endif %}
     </h1>
     <span class="py-3">{{ graph|safe }}</span>
   </div>
@@ -23,9 +23,9 @@
     Read some news about the company!
   </div>
 
-  <div class="container-fluid">
-    {% for i in range(0, 10) %}
-    <div class="card py-3 my-2 container-fluid border-dark text-black">
+  <div class="container-fluid py-2">
+    {% if titles %} {% for i in range(0, 10) %}
+    <div class="card py-3 my-3 container-fluid border-dark text-black">
       <div class="card-title row">
         <span class="col-11">{{ dates[i] }}</span>
         <a
@@ -39,7 +39,9 @@
         <p class="card-text fs-2">{{ titles[i] }}</p>
       </div>
     </div>
-    {% endfor %}
+    {% endfor %} {% else %}
+    <div class="text-center text-white">No news found!</div>
+    {% endif %}
   </div>
 </div>
 
