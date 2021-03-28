@@ -1,3 +1,9 @@
 .logo {
-  background-image: linear-gradient(to right, black, gray);
+  /* background-image: linear-gradient(to right, black, gray); */
+  background-color: rgb(68, 68, 68);
+  height: 90vh;
+}
+
+.sec {
+  background-color: rgb(216, 216, 216);
 }
