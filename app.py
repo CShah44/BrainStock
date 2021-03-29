@@ -118,4 +118,4 @@ def search_page():
 
 # Main function
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
