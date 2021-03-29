@@ -76,6 +76,9 @@ def home():
 
 @app.route('/<stock_name>')
 def get_stock_data(stock_name):
+
+    has_data = True
+
     try:
         graph = visualize(stock_name)
     except:
@@ -94,15 +97,13 @@ def get_stock_data(stock_name):
         details = stock.TickerFundament()
     except:
         # flash('Error retrieving stock related details!', category='error')
+        has_data = False
         desc = 'Description not found!'
         details = {'Company': stock_name, 'Sector': '', 'Industry': ''}
-        titles = []
-        links = []
-        dates = []
 
-        return render_template('stock.html', graph=graph, desc=desc, details=details, titles=titles, links=links, dates=dates)
+        return render_template('stock.html', graph=graph, desc=desc, details=details, has_data=has_data)
 
-    return render_template('stock.html', graph=graph, desc=desc, details=details, titles=titles, links=links, dates=dates)
+    return render_template('stock.html', graph=graph, desc=desc, details=details, titles=titles, links=links, dates=dates, has_data=has_data)
 
 
 # Search page with news!
