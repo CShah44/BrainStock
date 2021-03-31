@@ -51,12 +51,15 @@ def visualize(ticker):
         ],
         layout=go.Layout(
             height=500,
-            template='plotly_dark'
+            template='plotly_dark',
+            xaxis_title='Date',
+            yaxis_title='Price ($)'
             # Other templates : ["plotly", "plotly_white", "plotly_dark", "ggplot2", "seaborn", "simple_white", "none"]
         )
     )
 
     figure.update_layout(xaxis_rangeslider_visible=False)
+    figure.update_layout()
     return pio.to_html(figure)
 
 
@@ -72,8 +75,6 @@ def home():
     return render_template('index.html')
 
 # The requested stock page
-
-
 @app.route('/<stock_name>')
 def get_stock_data(stock_name):
 
@@ -118,4 +119,4 @@ def search_page():
 
 # Main function
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
