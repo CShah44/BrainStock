@@ -4,22 +4,22 @@
 
   
 ## Elegant, Convenient, Efficient
-### BrainStock is  a stock data visualization website made with python and flask for Timathon CodeJam based on theme of **Visualization**.
+__BrainStock is  a stock data visualization website made with python and flask for Timathon CodeJam based on theme of **Visualization**.__
 
 ## Analyze stock data 📕
-### Use our easy to use stock market tools to analyze stock data quickly. Just enter the ticker symbol of the required stock & you are ready to go!
+__Use our easy to use stock market tools to analyze stock data quickly. Just enter the ticker symbol of the required stock & you are ready to go!__
 
 ## Staying up-to-date with our news feed 🗞
-### You can ready our specially selected news to get the latest insights of the financial world on our search for stocks page or read the reports about your required stock and stay up-to-date!
+__You can ready our specially selected news to get the latest insights of the financial world on our search for stocks page or read the reports about your required stock and stay up-to-date!__
 
 ## Interactive graphs 📈
-### The main feature of our website - Interactive candlestick charts showing open, high, low, close prices of stocks. 
+__The main feature of our website - Interactive candlestick charts showing open, high, low, close prices of stocks.__
 
 ## Get latest stock insights 📰
-### Explore various features of your stocks like their sector, industry, etc. You can even read some news related to the stocks.
+__Explore various features of your stocks like their sector, industry, etc. You can even read some news related to the stocks.__
 
 ##  How do you get started? 🧐
-### Head on to the [website](https://brainstock.herokuapp.com) and get started immediately with our convenient and simple to use User Interface. Go to [search](https://brainstock.herokuapp.com/search) page to get data about your required stock or explore the news section to get an insight into the stock market.
+__Head on to the [website](https://brainstock.herokuapp.com) and get started immediately with our convenient and simple to use User Interface. Go to [search](https://brainstock.herokuapp.com/search) page to get data about your required stock or explore the news section to get an insight into the stock market.__
 
 <hr/>
 
