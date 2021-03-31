@@ -10,7 +10,7 @@ __BrainStock is  a stock data visualization website made with python and flask f
 __Use our easy to use stock market tools to analyze stock data quickly. Just enter the ticker symbol of the required stock & you are ready to go!__
 
 ## Staying up-to-date with our news feed 🗞
-__You can ready our specially selected news to get the latest insights of the financial world on our search for stocks page or read the reports about your required stock and stay up-to-date!__
+__You can read our specially selected news to get the latest insights of the financial world on our search for stocks page or read the reports about your required stock and stay up-to-date!__
 
 ## Interactive graphs 📈
 __The main feature of our website - Interactive candlestick charts showing open, high, low, close prices of stocks.__
@@ -40,7 +40,7 @@ Then install all the requirements using
 
 `pip install -r requirements.txt` 
 
-Open the project in the ide of your choice and you're ready to go!
+Open the project in the IDE/text editor of your choice and you're ready to go!
 
 <hr/>
 
